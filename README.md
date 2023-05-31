@@ -358,7 +358,7 @@ const store = configureStore({
 export default store
 ```
 
-修改App.tsx文件
+修改index.tsx文件
 
 ```
 import { Provider } from 'react-redux'
@@ -366,9 +366,12 @@ import store from '@/store'
 
 root.render(
   <Provider store={store}>
-    <HashRouter>
-      <App/>
-    </HashRouter>
+    	// 防止路由懒加载白屏报错
+	<Suspens fallback='loading...'>
+		<HashRouter>
+			<App/>
+		</HashRouter>
+	</Suspens>
   </Provider>
 )
 ```
