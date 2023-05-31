@@ -159,7 +159,7 @@ npm install eslint -D
 npx eslint --init
 ```
 
-![image-20230530093800651](/Users/coderzzx/Library/Application Support/typora-user-images/image-20230530093800651.png)
+![image-20230530093800651](/eslint.config.png)
 
 .eslintrc.js报错
 
