@@ -1,4 +1,4 @@
-# 创建react项目 TS版
+# 创建 react 项目 TS 版
 
 ```
 create-react-app project_name --template typescript
@@ -14,7 +14,7 @@ App.tsx index.tsx react-app-env.d.ts
 npm install @craco/craco@alpha -D
 ```
 
-创建craco.config.js文件
+创建 craco.config.js 文件
 
 ```
 const path = require('path')
@@ -29,7 +29,7 @@ module.exports = {
 }
 ```
 
-修改tsconfig.json文件
+修改 tsconfig.json 文件
 
 ```
 {
@@ -50,7 +50,7 @@ module.exports = {
         "noEmit": true,
         "jsx": "react-jsx",
         // 添加
-        "baseUrl": ".", 
+        "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"]
         }
@@ -61,7 +61,7 @@ module.exports = {
 
 ```
 
-修改package.json文件
+修改 package.json 文件
 
 ```
 "scripts": {
@@ -74,7 +74,7 @@ module.exports = {
 
 ### 配置项目代码规范
 
-创建.editorconfig文件
+创建.editorconfig 文件
 
 ```
 # http://editorconfig.org
@@ -94,25 +94,25 @@ max_line_length = off
 trim_trailing_whitespace = false
 ```
 
-安装prettier
+安装 prettier
 
 ```
 npm install prettier -D
 ```
 
-创建.prettierrc文件
+创建.prettierrc 文件
 
-\* useTabs：使用tab缩进还是空格缩进，选择false；
+\* useTabs：使用 tab 缩进还是空格缩进，选择 false；
 
-\* tabWidth：tab是空格的情况下，是几个空格，选择2个；
+\* tabWidth：tab 是空格的情况下，是几个空格，选择 2 个；
 
-\* printWidth：当行字符的长度，推荐80，也有人喜欢100或者120；
+\* printWidth：当行字符的长度，推荐 80，也有人喜欢 100 或者 120；
 
-\* singleQuote：使用单引号还是双引号，选择true，使用单引号；
+\* singleQuote：使用单引号还是双引号，选择 true，使用单引号；
 
 \* trailingComma：在多行输入的尾逗号是否添加，设置为 `none`；
 
-\* semi：语句末尾是否要加分号，默认值true，选择false表示不加；
+\* semi：语句末尾是否要加分号，默认值 true，选择 false 表示不加；
 
 ```
 {
@@ -125,7 +125,7 @@ npm install prettier -D
 }
 ```
 
-创建.prettierignore忽略文件
+创建.prettierignore 忽略文件
 
 ```
 /dist/*
@@ -141,19 +141,19 @@ npm install prettier -D
 
 配置一次性修改命令
 
-在package.json中配置
+在 package.json 中配置
 
 ```
 "prettier" : "prettier --write ."
 ```
 
-安装eslint
+安装 eslint
 
 ```
 npm install eslint -D
 ```
 
-配置eslint
+配置 eslint
 
 ```
 npx eslint --init
@@ -161,7 +161,7 @@ npx eslint --init
 
 ![image-20230530093800651](/eslint.config.png)
 
-.eslintrc.js报错
+.eslintrc.js 报错
 
 ```
 修改文件
@@ -187,13 +187,13 @@ module.exports = {
 }
 ```
 
-连接prettier+eslint
+连接 prettier+eslint
 
 ```
 npm i eslint-plugin-prettier eslint-config-prettier -D
 ```
 
-修改eslinrc.js文件
+修改 eslinrc.js 文件
 
 ```
 extends: [
@@ -204,13 +204,13 @@ extends: [
   ],
 ```
 
-### 使用less
+### 使用 less
 
 ```
 npm install craco-less@2.1.0-alpha.0
 ```
 
-修改craco.config.js文件
+修改 craco.config.js 文件
 
 ```
 const path = require('path')
@@ -233,37 +233,35 @@ module.exports = {
 }
 ```
 
-
-
 ### 项目文件结构划分
 
-assets静态文件资源
+assets 静态文件资源
 
-base-ui二次封装ui框架组件
+base-ui 二次封装 ui 框架组件
 
-components通用组件
+components 通用组件
 
-hooks封装的hooks
+hooks 封装的 hooks
 
-router项目路由
+router 项目路由
 
-service项目网络请求
+service 项目网络请求
 
-store项目全局状态数据
+store 项目全局状态数据
 
-utils项目工具
+utils 项目工具
 
-views项目页面
+views 项目页面
 
 ### css in js
 
-使用styled-components
+使用 styled-components
 
 ```
 npm install styled-components -D
 ```
 
-### 使用mui框架
+### 使用 mui 框架
 
 ```
 npm install @mui/material @emotion/styled
@@ -291,7 +289,7 @@ git push -u origin 默认分支
 npm install react-router-dom
 ```
 
-在router创建index.tsx文件
+在 router 创建 index.tsx 文件
 
 ```
 import React,{ lazy } from 'react'
@@ -313,22 +311,19 @@ const routes: RouteObject[] = [
 ]
 ```
 
-修改index.ts文件
+修改 index.ts 文件
 
 ```
 import { HashRouter } from 'react-router-dom'
 
 root.render(
-	// 防止路由懒加载白屏报错
-	<Suspens fallback='loading...'>
 		<HashRouter>
 			<App/>
 		</HashRouter>
-	</Suspens>
 )
 ```
 
-修改App.tsx文件
+修改 App.tsx 文件
 
 ```
 import React,{ Suspense } from 'react'
@@ -336,7 +331,10 @@ import { useRoutes } from 'react-router-dom'
 import routes from '@/router'
 
 <div className='App'>
-	{useRoutes(routes)}
+  // 防止路由懒加载白屏报错
+	<Suspens fallback='loading...'>
+	  {useRoutes(routes)}
+  </Suspens>
 </div>
 ```
 
@@ -346,7 +344,7 @@ import routes from '@/router'
 npm install @reduxjs/toolkit react-redux
 ```
 
-在store中创建index.ts文件
+在 store 中创建 index.ts 文件
 
 ```
 import { configureStore } from '@reduxjs/tookit'
@@ -358,7 +356,7 @@ const store = configureStore({
 export default store
 ```
 
-修改index.tsx文件
+修改 index.tsx 文件
 
 ```
 import { Provider } from 'react-redux'
@@ -366,17 +364,14 @@ import store from '@/store'
 
 root.render(
   <Provider store={store}>
-    	// 防止路由懒加载白屏报错
-	<Suspens fallback='loading...'>
 		<HashRouter>
 			<App/>
 		</HashRouter>
-	</Suspens>
   </Provider>
 )
 ```
 
-在store中创建modules文件夹
+在 store 中创建 modules 文件夹
 
 ```
 // test.ts
@@ -400,7 +395,7 @@ const testSlice = createSlice({
 export default testSlice.reducer
 ```
 
-修改store中index.ts文件
+修改 store 中 index.ts 文件
 
 ```
 import { configureStore } from '@reduxjs/tookit'
@@ -427,7 +422,7 @@ export const useAppShallowEqual = shallowEqual
 export default store
 ```
 
-在App.tsx中获取全局数据以及方法
+在 App.tsx 中获取全局数据以及方法
 
 ```
 import { useSelector } from 'react-redux'
@@ -458,9 +453,8 @@ function App(){
 npm install axios
 ```
 
-在service拉取代码
+在 service 拉取代码
 
 ```
 git clone https://github.com/coderzzx25/TS_Axios.git
 ```
-
