@@ -1,4 +1,4 @@
-# 创建react项目
+# 创建react项目 TS版
 
 ```
 create-react-app project_name --template typescript
