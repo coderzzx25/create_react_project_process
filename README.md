@@ -319,9 +319,12 @@ const routes: RouteObject[] = [
 import { HashRouter } from 'react-router-dom'
 
 root.render(
-	<HashRouter>
-		<App/>
-	</HashRouter>
+	// 防止路由懒加载白屏报错
+	<Suspens fallback='loading...'>
+		<HashRouter>
+			<App/>
+		</HashRouter>
+	</Suspens>
 )
 ```
 
@@ -333,10 +336,7 @@ import { useRoutes } from 'react-router-dom'
 import routes from '@/router'
 
 <div className='App'>
-	// 防止路由懒加载白屏报错
-	<Suspens fallback='loading...'>
-		{useRoutes(routes)}
-	</Suspens>
+	{useRoutes(routes)}
 </div>
 ```
 
